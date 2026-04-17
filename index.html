@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Biografia - Ricardo Gomes</title>
+  <link rel="shortcut icon" href="logo.png" type="image/png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #ffffff; color: #1e293b; }
+
+    header {
+      background: #f1f5f9;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .perfil { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+    .perfil img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #374151;
+      transition: transform 0.3s;
+    }
+
+    .perfil img:hover { transform: scale(1.05); }
+
+    header h1 {
+      font-size: 2rem;
+      color: #374151;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #1e293b;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #0ea5e9;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .intro { text-align: center; }
+
+    .intro p {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #f1f5f9;
+      padding: 20px;
+      border-radius: 10px;
+      transition: all 0.3s;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 10px;
+      transition: transform 0.3s;
+    }
+
+    .card img:hover { transform: scale(1.2); }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #0ea5e9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f5f9;
+      margin-top: 40px;
+    }
+
+    footer a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #1e293b;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #0ea5e9;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      border: none;
+      background: #0ea5e9;
+      color: #ffffff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover { background: #0284c7; }
+
+    /* BOTÃO MENU */
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 25px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #374151;
+      transition: 0.3s;
+    }
+
+    .menu-toggle:hover {
+      color: #0ea5e9;
+    }
+
+    .menu-toggle span {
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .menu-toggle.active span {
+      transform: rotate(180deg);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #f1f5f9;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 10px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .perfil img { width: 90px; height: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="perfil">
+    <img src="logo_perfil.png" alt="Minha Foto">
+    <h1>Ricardo Gomes - Desenvolvedor</h1>
+  </div>
+
+  <!-- BOTÃO MENU -->
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <span id="icon-menu">☰</span>
+  </button>
+
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#projetos">Projetos</a>
+  </nav>
+</header>
+
+<section id="sobre" class="intro">
+  <h2>Sobre Mim</h2>
+  <p>
+    Olá! Meu nome é Ricardo, sou desenvolvedor apaixonado por tecnologia.
+    Tenho experiência com diversas linguagens como PHP, JavaScript, Java e Python.
+    Estou sempre buscando aprender novas tecnologias e desenvolver soluções criativas.
+  </p>
+</section>
+
+<section id="projetos">
+  <h2>Meus Projetos</h2>
+  <div class="projects" id="lista-projetos"></div>
+</section>
+
+<footer>
+  <p>© 2026 - Ricardo Gomes - Desenvolvedor</p>
+  <div style="margin-top:10px;">
+    <a href="https://www.facebook.com/riihgomes19" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/riih_gomes19/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/ricardo-gomes01/" target="_blank">LinkedIn</a>
+    <a href="https://www.youtube.com/@ricardogomes3448/posts" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector("nav");
+    const button = document.querySelector(".menu-toggle");
+    const icon = document.getElementById("icon-menu");
+
+    nav.classList.toggle("active");
+    button.classList.toggle("active");
+
+    if (nav.classList.contains("active")) {
+      icon.textContent = "✖";
+    } else {
+      icon.textContent = "☰";
+    }
+  }
+
+  const projetos = [
+    { nome: "HTML", imagem: "logo_html.png", descricao: "Estruturação de páginas web modernas." },
+    { nome: "CSS", imagem: "logo_css.png", descricao: "Estilização e layouts responsivos." },
+    { nome: "PHP", imagem: "logo_php.png", descricao: "Sistemas web com banco de dados." },
+    { nome: "JavaScript", imagem: "logo_javascript.png", descricao: "Aplicações interativas." },
+    { nome: "Java", imagem: "logo_java.webp", descricao: "Aplicações orientadas a objetos." },
+    { nome: "Python", imagem: "logo_python.png", descricao: "Automação e análise de dados." }
+  ];
+
+  const container = document.getElementById("lista-projetos");
+
+  projetos.forEach(projeto => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML = `
+      <img src="${projeto.imagem}" alt="Logo ${projeto.nome}">
+      <h3>${projeto.nome}</h3>
+      <p>${projeto.descricao}</p>
+      <button onclick="mostrarMensagem('${projeto.nome}')">Ver mais</button>
+    `;
+
+    container.appendChild(card);
+  });
+
+  function mostrarMensagem(tecnologia) {
+    alert('Você clicou em projetos de ' + tecnologia);
+  }
+</script>
+
+</body>
+</html>
